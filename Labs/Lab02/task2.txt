@@ -1,0 +1,64 @@
+а) 1/2;
+
+Тип данных: number
+Значение: 0.5
+
+б) 12/0;
+
+Тип данных: number
+Значение: Infinity
+
+в) true + false;
+
+Тип данных: number
+Значение: 1
+
+г) 12 / "6";
+
+Тип данных: number
+Значение: 2
+
+д) "number" + 15 + 3;
+
+Тип данных: string
+Значение: "number153"
+
+е) 15 + 3 + "number";
+
+Тип данных: string
+Значение: "18number" 
+
+ж) [1] > null;
+
+Тип данных: boolean
+Значение: true
+
+з) "foo" + + "bar";
+
+Тип данных: string
+Значение: "fooNaN"
+
+и) 'true' == true;
+
+Тип данных: boolean
+Значение: true 
+
+к) false == 'false';
+
+Тип данных: boolean
+Значение: false
+
+л) null == '';
+
+Тип данных: boolean
+Значение: false
+
+м) !!"false" == !!"true";
+
+Тип данных: boolean
+Значение: true
+
+н) ['x'] == 'x';
+
+Тип данных: boolean
+Значение: true
