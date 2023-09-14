@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Лабораторная работа №3</title>
+  </head>
+  <body>
+    <script>
+      var userName = prompt("Введите ваше имя:");
+      if (userName) {
+        document.write("<p>Привет, " + userName + "!</p>");
+      }
+    </script>
+
+    <script>
+      alert("Привет,\njavascript!");
+    </script>
+
+    <script>
+      var userChoice = confirm("Нажмите OK или Отмена");
+      if (userChoice) {
+        alert("Вы выбрали OK");
+      } else {
+        alert("Вы выбрали Отмена");
+      }
+    </script>
+
+    <script>
+      var enteredName = prompt("Введите свое имя:");
+      if (enteredName) {
+        var confirmation = confirm(
+          "Введенное имя " + enteredName + " правильное?"
+        );
+        if (confirmation) {
+          alert("Здравствуйте, " + enteredName + "!");
+        }
+      }
+    </script>
+  </body>
+</html>
