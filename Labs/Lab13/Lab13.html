@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лабораторная работа №13</title>
+</head>
+<body>
+    <script>
+        var calculator = {
+            value1: 0,
+            value2: 0,
+
+            read: function() {
+                this.value1 = parseFloat(prompt("Введите первое значение:"));
+                this.value2 = parseFloat(prompt("Введите второе значение:"));
+            },
+
+            sum: function() {
+                return this.value1 + this.value2;
+            },
+
+            mul: function() {
+                return this.value1 * this.value2;
+            }
+        };
+
+        calculator.read();
+        alert("Сумма: " + calculator.sum());
+        alert("Произведение: " + calculator.mul());
+    </script>
+
+    <script>
+        var ladder = {
+            step: 0,
+
+            up: function() {
+                this.step++;
+                return this;
+            },
+
+            down: function() {
+                this.step--;
+                return this;
+            },
+
+            showStep: function() {
+                alert(this.step);
+                return this;
+            }
+        };
+
+        ladder.up().up().down().showStep(); // 1
+    </script>
+</body>
+</html>
