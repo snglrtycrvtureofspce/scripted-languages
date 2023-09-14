@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Лабораторная работа №8</title>
+  </head>
+  <body>
+    <script>
+      function calculateMaxCharge(diameter, electricField) {
+        var radius = diameter / 2;
+        var epsilon0 = 8.85e-12;
+        var maxCharge = 4 * Math.PI * epsilon0 * radius * electricField;
+        return maxCharge;
+      }
+
+      // Функция для расчета потенциала
+      function calculatePotential(charge, radius) {
+        var k = 9e9;
+        var potential = (k * charge) / radius;
+        return potential;
+      }
+
+      var r1 = 0.1;
+      var r2 = 0.15;
+      var r3 = 0.2;
+
+      var electricField = 3e6;
+
+      var maxCharge1 = calculateMaxCharge(r1, electricField);
+      var maxCharge2 = calculateMaxCharge(r2, electricField);
+      var maxCharge3 = calculateMaxCharge(r3, electricField);
+
+      var potential1 = calculatePotential(maxCharge1, r1);
+      var potential2 = calculatePotential(maxCharge2, r2);
+      var potential3 = calculatePotential(maxCharge3, r3);
+
+      alert(
+        "Максимальный предельный заряд для шара с диаметром " +
+          r1 +
+          " м: " +
+          maxCharge1 +
+          " Кл"
+      );
+      alert(
+        "Потенциал для шара с максимальным предельным зарядом и диаметром " +
+          r1 +
+          " м: " +
+          potential1 +
+          " В"
+      );
+
+      alert(
+        "Максимальный предельный заряд для шара с диаметром " +
+          r2 +
+          " м: " +
+          maxCharge2 +
+          " Кл"
+      );
+      alert(
+        "Потенциал для шара с максимальным предельным зарядом и диаметром " +
+          r2 +
+          " м: " +
+          potential2 +
+          " В"
+      );
+
+      alert(
+        "Максимальный предельный заряд для шара с диаметром " +
+          r3 +
+          " м: " +
+          maxCharge3 +
+          " Кл"
+      );
+      alert(
+        "Потенциал для шара с максимальным предельным зарядом и диаметром " +
+          r3 +
+          " м: " +
+          potential3 +
+          " В"
+      );
+    </script>
+  </body>
+</html>
