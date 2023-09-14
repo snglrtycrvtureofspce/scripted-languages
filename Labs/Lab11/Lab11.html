@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Лабораторная работа №11</title>
+  </head>
+  <body>
+    <script>
+      var NOTE = {
+        Name: "Пупкин А.О.",
+        TELE: "+375 29 123-45-67",
+        DATE: {
+          Year: 2004,
+          Month: 8,
+          Day: 22,
+        },
+      };
+
+      var copiedByReference = NOTE;
+
+      var copiedByValue = JSON.parse(JSON.stringify(NOTE));
+
+      console.log("Исходный объект NOTE:");
+      console.log(NOTE);
+
+      console.log("Скопированный по ссылке объект:");
+      console.log(copiedByReference);
+
+      console.log("Скопированный по значению объект:");
+      console.log(copiedByValue);
+    </script>
+  </body>
+</html>
