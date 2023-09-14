@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Лабораторная работа №10</title>
+  </head>
+  <body>
+    <script>
+      function AEROFLOT(destination, flightNumber, aircraftType) {
+        this.destination = destination;
+        this.flightNumber = flightNumber;
+        this.aircraftType = aircraftType;
+      }
+
+      var flights = [];
+      for (var i = 0; i < 7; i++) {
+        var destination = prompt(
+          "Введите пункт назначения для рейса " + (i + 1) + ":"
+        );
+        var flightNumber = parseInt(
+          prompt("Введите номер рейса " + (i + 1) + ":")
+        );
+        var aircraftType = prompt(
+          "Введите тип самолета для рейса " + (i + 1) + ":"
+        );
+
+        var aeroflotFlight = new AEROFLOT(
+          destination,
+          flightNumber,
+          aircraftType
+        );
+        flights.push(aeroflotFlight);
+      }
+
+      var searchDestination = prompt(
+        "Введите название пункта назначения для поиска:"
+      );
+
+      var foundFlights = [];
+      for (var j = 0; j < flights.length; j++) {
+        if (flights[j].destination === searchDestination) {
+          foundFlights.push(flights[j]);
+        }
+      }
+
+      if (foundFlights.length > 0) {
+        alert("Найдены рейсы в пункт назначения '" + searchDestination + "':");
+        for (var k = 0; k < foundFlights.length; k++) {
+          alert(
+            "Номер рейса: " +
+              foundFlights[k].flightNumber +
+              ", Тип самолета: " +
+              foundFlights[k].aircraftType
+          );
+        }
+      } else {
+        alert("Рейсы в указанный пункт назначения не найдены.");
+      }
+    </script>
+  </body>
+</html>
