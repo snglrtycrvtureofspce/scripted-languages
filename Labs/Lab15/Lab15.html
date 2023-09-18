@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Functions</title>
+  </head>
+  <body>
+    <h1>Задание 1: ucFirst</h1>
+    <form>
+      <label for="inputStr1">Введите строку:</label>
+      <input type="text" id="inputStr1" />
+      <button type="button" onclick="testUcFirst()">Протестировать</button>
+    </form>
+    <p>Результат: <span id="ucFirstResult"></span></p>
+
+    <h1>Задание 2: checkSpam</h1>
+    <form>
+      <label for="inputStr2">Введите строку:</label>
+      <input type="text" id="inputStr2" />
+      <button type="button" onclick="testCheckSpam()">Протестировать</button>
+    </form>
+    <p>Результат: <span id="checkSpamResult"></span></p>
+
+    <h1>Задание 3: truncate</h1>
+    <form>
+      <label for="inputStr3">Введите строку:</label>
+      <input type="text" id="inputStr3" />
+      <br />
+      <label for="maxlength">Максимальная длина:</label>
+      <input type="number" id="maxlength" />
+      <button type="button" onclick="testTruncate()">Протестировать</button>
+    </form>
+    <p>Результат: <span id="truncateResult"></span></p>
+
+    <h1>Задание 4: extractCurrencyValue</h1>
+    <form>
+      <label for="priceString">Введите строку стоимости:</label>
+      <input type="text" id="priceString" />
+      <button type="button" onclick="testExtractCurrencyValue()">
+        Протестировать
+      </button>
+    </form>
+    <p>Результат: <span id="extractCurrencyValueResult"></span></p>
+
+    <script>
+      function ucFirst(str) {
+        if (!str) return str;
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
+      function testUcFirst() {
+        var inputStr1 = document.getElementById("inputStr1").value;
+        var result1 = ucFirst(inputStr1);
+        document.getElementById("ucFirstResult").textContent = result1;
+      }
+
+      function checkSpam(str) {
+        var lowerStr = str.toLowerCase();
+        return lowerStr.includes("торрент") || lowerStr.includes("ммм");
+      }
+
+      function testCheckSpam() {
+        var inputStr2 = document.getElementById("inputStr2").value;
+        var isSpam = checkSpam(inputStr2);
+        document.getElementById("checkSpamResult").textContent = isSpam
+          ? "Содержит спам"
+          : "Не содержит спам";
+      }
+
+      function truncate(str, maxlength) {
+        if (str.length > maxlength) {
+          return str.slice(0, maxlength - 1) + "…";
+        }
+        return str;
+      }
+
+      function testTruncate() {
+        var inputStr3 = document.getElementById("inputStr3").value;
+        var maxlength = parseInt(document.getElementById("maxlength").value);
+        var truncatedStr = truncate(inputStr3, maxlength);
+        document.getElementById("truncateResult").textContent = truncatedStr;
+      }
+
+      function extractCurrencyValue(str) {
+        return parseInt(str.slice(1), 10);
+      }
+
+      function testExtractCurrencyValue() {
+        var priceString = document.getElementById("priceString").value;
+        var priceValue = extractCurrencyValue(priceString);
+        document.getElementById("extractCurrencyValueResult").textContent =
+          priceValue;
+      }
+    </script>
+  </body>
+</html>
