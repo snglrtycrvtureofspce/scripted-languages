@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Лабораторная работа №12</title>
+  </head>
+  <body>
+    <script>
+      var NOTE = {
+        Name: "Зеневич А.О.",
+        TELE: "+375 29 425-76-11",
+        DATE: {
+          Year: 2004,
+          Month: 8,
+          Day: 22,
+        },
+      };
+
+      var arrayOfObjects = [NOTE];
+
+      function deleteCopy() {
+        setTimeout(function () {
+          arrayOfObjects.shift();
+          console.log("Копия удалена");
+        }, 2000);
+      }
+
+      console.log("Исходный объект NOTE:");
+      console.log(NOTE);
+
+      console.log("Массив объектов:");
+      console.log(arrayOfObjects);
+
+      deleteCopy();
+    </script>
+  </body>
+</html>
