@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Time Object</title>
+  </head>
+  <body>
+    <h1>Time Object</h1>
+
+    <script>
+      function Time(hours, minutes, seconds) {
+        this.hours = hours;
+        this.minutes = minutes;
+        this.seconds = seconds;
+      }
+
+      Time.prototype.totalSeconds = function () {
+        return this.hours * 3600 + this.minutes * 60 + this.seconds;
+      };
+
+      Time.prototype.addSeconds = function () {
+        var totalSeconds = this.totalSeconds() + 5;
+        this.hours = Math.floor(totalSeconds / 3600);
+        this.minutes = Math.floor((totalSeconds % 3600) / 60);
+        this.seconds = totalSeconds % 60;
+      };
+
+      var myTime = new Time(10, 30, 45);
+
+      console.log(
+        "Исходное время: " +
+          myTime.hours +
+          " часов, " +
+          myTime.minutes +
+          " минут, " +
+          myTime.seconds +
+          " секунд"
+      );
+      console.log(
+        "Общее количество секунд: " + myTime.totalSeconds() + " секунд"
+      );
+
+      myTime.addSeconds();
+      console.log(
+        "Время после увеличения на 5 секунд: " +
+          myTime.hours +
+          " часов, " +
+          myTime.minutes +
+          " минут, " +
+          myTime.seconds +
+          " секунд"
+      );
+    </script>
+  </body>
+</html>
