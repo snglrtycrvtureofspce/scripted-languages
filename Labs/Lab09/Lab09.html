@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторная работа №9</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      #result {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Решение уравнений</h1>
+    <label for="formula">Выберите формулу:</label>
+    <select id="formula">
+      <option value="1">1. a * sin^2 * x + b * cos (zx)</option>
+      <option value="2">2. a^b - cos^3(a + zx)</option>
+      <option value="3">3. sqrt(2.5 * a^3 + (b - zx^2)^6)</option>
+    </select>
+
+    <div>
+      <label for="x">Введите значение x:</label>
+      <input type="number" id="x" step="0.01" />
+    </div>
+
+    <div>
+      <label for="a">Введите значение a:</label>
+      <input type="number" id="a" step="0.01" />
+    </div>
+
+    <div>
+      <label for="b">Введите значение b:</label>
+      <input type="number" id="b" step="0.01" />
+    </div>
+
+    <div>
+      <label for="z">Введите значение z:</label>
+      <input type="number" id="z" step="0.01" />
+    </div>
+
+    <button onclick="calculate()">Рассчитать</button>
+
+    <div id="result">Результат: <span id="output"></span></div>
+
+    <script>
+      function calculate() {
+        const formula = parseInt(document.getElementById("formula").value);
+        const x = parseFloat(document.getElementById("x").value);
+        const a = parseFloat(document.getElementById("a").value);
+        const b = parseFloat(document.getElementById("b").value);
+        const z = parseFloat(document.getElementById("z").value);
+
+        let result;
+
+        if (formula === 1) {
+          if (x < -Math.log(a)) {
+            result = a * Math.pow(Math.sin(x), 2) + b * Math.cos(z * x);
+          } else if (x >= -Math.log(a) && x <= b) {
+            result = Math.pow(a, b) - Math.pow(Math.cos(a + z * x), 3);
+          } else {
+            result = Math.sqrt(
+              2.5 * Math.pow(a, 3) + Math.pow(b - Math.pow(z * x, 2), 6)
+            );
+          }
+        } else if (formula === 2) {
+          result = Math.pow(a, b) - Math.pow(Math.cos(a + z * x), 3);
+        } else if (formula === 3) {
+          result = Math.sqrt(
+            2.5 * Math.pow(a, 3) + Math.pow(b - Math.pow(z * x, 2), 6)
+          );
+        }
+
+        document.getElementById("output").textContent = result.toFixed(2);
+      }
+    </script>
+  </body>
+</html>
