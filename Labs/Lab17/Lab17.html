@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript Tasks</title>
+  </head>
+  <body>
+    <script>
+      // Задание 1: Переведите текст вида border-left-width в borderLeftWidth
+      function camelize(str) {
+        return str
+          .split("-")
+          .map((word, index) =>
+            index === 0 ? word : word[0].toUpperCase() + word.slice(1)
+          )
+          .join("");
+      }
+
+      console.log(camelize("background-color"));
+      console.log(camelize("list-style-image"));
+      console.log(camelize("-webkit-transition"));
+
+      // Задание 2: Фильтрация по диапазону
+      function filterRange(arr, a, b) {
+        return arr.filter((item) => a <= item && item <= b);
+      }
+
+      let arr1 = [5, 3, 8, 1];
+      let filtered = filterRange(arr1, 1, 4);
+      console.log(filtered); // 3,1 (совпадающие значения)
+      console.log(arr1); // 5,3,8,1 (без изменений)
+
+      // Задание 3: Фильтрация по диапазону "на месте"
+      function filterRangeInPlace(arr, a, b) {
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] < a || arr[i] > b) {
+            arr.splice(i, 1);
+            i--;
+          }
+        }
+      }
+
+      let arr2 = [5, 3, 8, 1];
+      filterRangeInPlace(arr2, 1, 4); // удалены числа вне диапазона 1..4
+      console.log(arr2); // [3, 1]
+
+      // Задание 4: Скопировать и отсортировать массив
+      function copySorted(arr) {
+        return [...arr].sort();
+      }
+
+      let arr3 = ["HTML", "JavaScript", "CSS"];
+      let sorted = copySorted(arr3);
+      console.log(sorted); // CSS, HTML, JavaScript
+      console.log(arr3); // HTML, JavaScript, CSS (без изменений)
+
+      // Задание 5: Трансформировать в массив имён
+      let vasya = { name: "Вася", age: 25 };
+      let petya = { name: "Петя", age: 30 };
+      let masha = { name: "Маша", age: 28 };
+      let users = [vasya, petya, masha];
+      let names = users.map((user) => user.name);
+      console.log(names); // Вася, Петя, Маша
+    </script>
+  </body>
+</html>
