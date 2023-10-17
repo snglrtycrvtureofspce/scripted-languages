@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лабораторная работа №16</title>
+</head>
+<body>
+<script>
+    // проверка является ли инпут массивом или нет
+    function is_array(input) {
+        return Array.isArray(input);
+    }
+
+    console.log(is_array('resource'));
+    console.log(is_array([1, 2, 4, 0]));
+
+    // клонирование массива
+    function array_Clone(input) {
+        return input.slice(0);
+    }
+
+    console.log(array_Clone([1, 2, 4, 0]));
+    console.log(array_Clone([1, 2, [4, 0]]));
+
+    // полуечение первого жлемента массива. Передача параметра 'n' вернет первые 'n' элементы массива
+    function first(input, n) {
+        if (n === undefined) {
+            return input[0];
+        }
+        return input.slice(0, n);
+    }
+
+    console.log(first([7, 9, 0, -2]));
+    console.log(first([], 3));
+    console.log(first([7, 9, 0, -2], 3));
+    console.log(first([7, 9, 0, -2], 6));
+    console.log(first([7, 9, 0, -2], -3));
+
+    // 4. Напишите функцию JavaScript, чтобы получить последний элемент массива. Передача параметра 'n' вернет последние 'n' элементы массива
+    function latest(input, n) {
+        if (n === undefined) {
+            return input[input.length - 1];
+        }
+        return input.slice(-n);
+    }
+
+    console.log(latest([7, 9, 0, -2]));
+    console.log(latest([7, 9, 0, -2], 3));
+    console.log(latest([7, 9, 0, -2], 6));
+
+    // 5. Напишите простую программу на JavaScript, чтобы объединить все элементы следующего массива в строку.
+    var myColor = ["Объекдиним", "элементы", "массива", "в строку"];
+    var result1 = myColor.join(', ');
+    var result2 = myColor.join(' + ');
+
+    console.log('"' + result1 + '"');
+    console.log('"' + result1 + '"');
+    console.log('"' + result2 + '"');
+
+    // 6. Напишите программу на JavaScript для сортировки элементов массива
+    var arr1 = [3, 8, 7, 6, 5, -4, 3, 2, 1];
+    arr1.sort(function (a, b) {
+        return a - b;
+    });
+
+    console.log(arr1);
+
+    // 7. Напишите программу на JavaScript, чтобы найти наиболее часто повторяющийся элемент массива
+    function dublicates_arr(arr) {
+        var counts = {};
+        var mostFrequent;
+        var maxCount = 0;
+
+        for (var i = 0; i < arr.length; i++) {
+            var item = arr[i];
+            if (counts[item] === undefined) {
+                counts[item] = 1;
+            } else {
+                counts[item]++;
+            }
+
+            if (counts[item] > maxCount) {
+                mostFrequent = item;
+                maxCount = counts[item];
+            }
+        }
+
+        return mostFrequent + ' (' + maxCount + ' раз)';
+    }
+
+    var arr2 = [65, 'a', 'kkk', 'a', 65, 3255, 'kkk', 332, 'a', 2, 4, 9, 65];
+    var result3 = dublicates_arr(arr2);
+
+    console.log(result3);
+
+    // 8. Напишите программу на JavaScript для вычисления суммы и произведения массива целых чисел
+    function sum_proizv(arr) {
+        var sum = 0;
+        var product = 1;
+
+        for (var i = 0; i < arr.length; i++) {
+            sum += arr[i];
+            product *= arr[i];
+        }
+
+        return 'Сумма: ' + sum + ', Произведение: ' + product;
+    }
+
+    var arr3 = [1, 2, 3, 4, 5];
+    var result4 = sum_proizv(arr3);
+
+    console.log(result4);
+
+    // 9. Напишите программу на JavaScript для удаления дублирующихся элементов из массива (игнорируйте регистр символов).
+    function remove_arr_elem(arr) {
+        var uniqueArr = [];
+
+        for (var i = 0; i < arr.length; i++) {
+            var item = arr[i].toString().toLowerCase();
+            if (uniqueArr.indexOf(item) === -1) {
+                uniqueArr.push(item);
+            }
+        }
+
+        return uniqueArr;
+    }
+
+    var arr4 = ['привет', 'как', 'ваши', 'дела', 'как'];
+    var result5 = remove_arr_elem(arr4);
+
+    console.log(result5);
+
+    // 10. Напишите программу на JavaScript для выполнения бинарного поиска в отсортированном массиве
+    function binary_search(arr, element) {
+        var left = 0;
+        var right = arr.length - 1;
+
+        while (left <= right) {
+            var mid = Math.floor((left + right) / 2);
+
+            if (arr[mid] === element) {
+                return mid;
+            } else if (arr[mid] < element) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+
+    var arr5 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var elementToFind = 5;
+    var result6 = binary_search(arr5, elementToFind);
+
+    console.log('Индекс элемента ' + elementToFind + ': ' + result6);
+
+    // Задание 2 
+    // (4. Написать программу определения максимального предельного заряда
+    // и потенциала для трех шаров с диаметром r1, r2, r3, 
+    // используя функции расчета максимального предельного заряда и потенциала.
+    // Напряженность поля, при которой начинается ударная ионизация, равна 3 МВ/м.)
+    var epsilon = 8.854e-12;
+
+    var E = 3e6;
+
+    var r1 = 0.1;
+    var r2 = 0.2;
+    var r3 = 0.3;
+
+    function calculateMaxCharge(radius) {
+        return 4 * Math.PI * epsilon * radius * E;
+    }
+
+    function calculatePotential(charge, radius) {
+        return charge / (4 * Math.PI * epsilon * radius);
+    }
+
+    var Qmax1 = calculateMaxCharge(r1);
+    var V1 = calculatePotential(Qmax1, r1);
+
+    var Qmax2 = calculateMaxCharge(r2);
+    var V2 = calculatePotential(Qmax2, r2);
+
+    var Qmax3 = calculateMaxCharge(r3);
+    var V3 = calculatePotential(Qmax3, r3);
+
+    console.log("Максимальный предельный заряд для r1:", Qmax1, "Кл");
+    console.log("Потенциал для r1:", V1, "В");
+
+    console.log("Максимальный предельный заряд для r2:", Qmax2, "Кл");
+    console.log("Потенциал для r2:", V2, "В");
+
+    console.log("Максимальный предельный заряд для r3:", Qmax3, "Кл");
+    console.log("Потенциал для r3:", V3, "В");
+</script>
+</body>
+</html>
