@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Лабораторная работа №18</title>
+</head>
+<body>
+
+<script>
+  // Задание 1. Создать дату. Создать объект Date для даты: 20 февраля 2012
+  // года, 3 часа 12 минут. Временная зона – местная.
+  let date = new Date(2012, 1, 20, 3, 12);
+  
+  // Задание 2. Показать день недели. Написать функцию getWeekDay(date),
+  // показывающую день недели в коротком формате: «ПН», «ВТ», «СР», «ЧТ», «ПТ»,
+  // «СБ», «ВС».
+  function getWeekDay(date) {
+    const daysOfWeek = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
+    return daysOfWeek[date.getDay()];
+  }
+
+  // Задание 3. День недели в европейской нумерации. В Европейских странах
+  // неделя начинается с понедельника (день номер 1), затем идёт вторник (номер 2) и
+  // так до воскресенья (номер 7). Написать функцию getLocalDay(date), которая
+  // возвращает «европейский» день недели для даты date.
+  function getLocalDay(date) {
+    let day = date.getDay();
+    if (day === 0) day = 7;
+    return day;
+  }
+
+  // Задание 4. Какой день месяца был много дней назад? Создать функцию
+  // getDateAgo(date, days), возвращающую число, которое было days дней назад от
+  // даты date. К примеру, если сегодня двадцатое число, то getDateAgo(new Date(), 1)
+  // вернёт девятнадцатое и getDateAgo(new Date(), 2) – восемнадцатое. Функция
+  // должна надёжно работать при значении days=365 и больших значениях.
+  function getDateAgo(date, days) {
+    let newDate = new Date(date);
+    newDate.setDate(date.getDate() - days);
+    return newDate.getDate();
+  }
+
+  // Задание 5. Написать функцию formatDate(date), форматирующую date по
+  // следующему принципу:
+  // 1) Если спустя date прошло менее 1 секунды, вывести «прямо сейчас».
+  // 2) В противном случае, если с date прошло меньше 1 минуты, вывести «n
+  // сек. Назад».
+  // 3) В противном случае, если меньше часа, вывести «m мин. Назад».
+  // 4) В противном случае, полная дата в формате «DD.MM.YY HH:mm». А
+  // именно: «день.месяц.год часы:минуты», всё в виде двух цифр, т.е. 31.12.16 10:00.
+  function formatDate(date) {
+    let diff = new Date() - date;
+
+    if (diff < 1000) {
+      return 'прямо сейчас';
+    } else if (diff < 60000) {
+      return Math.floor(diff / 1000) + ' сек. назад';
+    } else if (diff < 3600000) {
+      return Math.floor(diff / 60000) + ' мин. назад';
+    } else {
+      let dd = date.getDate();
+      let mm = date.getMonth() + 1;
+      let yy = date.getFullYear() % 100;
+      let hh = date.getHours();
+      let min = date.getMinutes();
+      if (dd < 10) dd = '0' + dd;
+      if (mm < 10) mm = '0' + mm;
+      if (yy < 10) yy = '0' + yy;
+      if (hh < 10) hh = '0' + hh;
+      if (min < 10) min = '0' + min;
+      return dd + '.' + mm + '.' + yy + ' ' + hh + ':' + min;
+    }
+  }
+
+  console.log(getWeekDay(date)); // День недели
+  console.log(getLocalDay(date)); // Европейская нумерация дня недели
+  console.log(getDateAgo(date, 11)); // День месяца был 2 дня назад
+  console.log(formatDate(new Date())); // Форматирование даты
+
+  // Задание 6.1. Ввести значение времени и выполнить его форматирование: часы (0-23),
+  // минуты (0-59) и секунды (0-59).
+  function formatTime(hours, minutes, seconds) {
+    if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59 && seconds >= 0 && seconds <= 59) {
+      return `${hours}:${minutes}:${seconds}`;
+    } else {
+      return 'Некорректное время';
+    }
+  }
+
+  console.log(formatTime(8, 45, 30));
+
+  // Задание 6.2. Судебному отделу разработать программу, которая для введенной даты
+  // административного правонарушения выводит информацию о сроке ее
+  // давности на данный момент времени. Срок давности представить в виде
+  // отдельных значений: полного количества дней, полного количества месяцев
+  // и полного количества лет, прошедших с момента правонарушения.
+  function calculatePravoNarush(offenseDate) {
+    const currentDate = new Date();
+    const diffInMilliseconds = currentDate - offenseDate;
+    const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+    const diffInMonths = Math.floor(diffInDays / 30.44);
+    const diffInYears = Math.floor(diffInMonths / 12);
+    
+    return {
+      days: diffInDays,
+      months: diffInMonths,
+      years: diffInYears
+    };
+  }
+
+  const offenseDate = new Date(2022, 5, 15);
+  console.log(calculatePravoNarush(offenseDate)); // срок давности
+</script>
+
+</body>
+</html>
