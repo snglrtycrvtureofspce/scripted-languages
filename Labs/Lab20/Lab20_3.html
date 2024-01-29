@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пример использования var с повторным объявлением</title>
+  </head>
+  <body>
+    <script>
+      // Повторное объявление let приведет к ошибке
+      //try {
+      //  let userLet;
+      //  let userLet; // SyntaxError: 'userLet' has already been declared
+      //} catch (error) {
+      //  console.error("Ошибка:", error.message);
+      //}
+
+      // Повторное объявление var не вызывает ошибки
+      var userVar = "Pete";
+      var userVar;
+      alert(userVar);
+
+      var userVar = "John";
+      alert(userVar);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пример поднятия переменных с использованием var</title>
+  </head>
+  <body>
+    <script>
+      // Пример поднятия переменной var внутри функции
+      function sayHi() {
+        phrase = "Привет";
+        alert(phrase);
+        var phrase;
+      }
+      sayHi();
+
+      // Технически эквивалентный код с явным поднятием переменной var
+      function equivalentCode() {
+        var phrase;
+        phrase = "Привет";
+        alert(phrase);
+      }
+      equivalentCode();
+
+      // Пример использования var внутри условного оператора (с "всплывающим" объявлением)
+      function conditionExample() {
+        phrase = "Привет";
+        if (false) {
+          var phrase;
+        }
+        alert(phrase);
+      }
+      conditionExample();
+
+      // Пример поднятия переменной var с объявлением вверху, но присвоением внизу
+      function hoistingAndAssignment() {
+        alert(phrase);
+        var phrase = "Привет";
+      }
+      hoistingAndAssignment();
+    </script>
+  </body>
+</html>

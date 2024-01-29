@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пример использования let, const и var</title>
+  </head>
+  <body>
+    <script>
+      // Пример использования var без блочной области видимости
+      if (true) {
+        var testVar = true;
+      }
+      alert(testVar);
+
+      // Пример использования let с блочной областью видимости
+      try {
+        if (true) {
+          let testLet = true; // используем let
+        }
+        alert(testLet);
+      } catch (error) {
+        console.error("Ошибка:", error.message);
+      }
+
+      // Пример использования var в цикле
+      for (var i = 0; i < 10; i++) {}
+      alert(i);
+
+      // Пример использования var внутри функции
+      function sayHi() {
+        if (true) {
+          var phrase = "Привет";
+        }
+        alert(phrase);
+      }
+      sayHi();
+      try {
+        alert(phrase);
+      } catch (error) {
+        console.error("Ошибка:", error.message);
+      }
+    </script>
+  </body>
+</html>

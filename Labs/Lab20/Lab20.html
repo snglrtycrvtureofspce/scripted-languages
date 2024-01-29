@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пример использования let, const и var</title>
+  </head>
+  <body>
+    <script>
+      // Пример использования let
+      function exampleUsingLet() {
+        let message = "Привет";
+        alert(message);
+      }
+      exampleUsingLet();
+
+      // Пример использования const
+      function exampleUsingConst() {
+        const greeting = "Привет";
+        alert(greeting);
+      }
+      exampleUsingConst();
+
+      // Пример использования var
+      function exampleUsingVar() {
+        var phrase = "Привет";
+        alert(phrase);
+      }
+      exampleUsingVar();
+
+      try {
+        alert(phrase);
+      } catch (error) {
+        console.error("Ошибка:", error.message);
+      }
+    </script>
+  </body>
+</html>
