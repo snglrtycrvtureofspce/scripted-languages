@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторная работа №28</title>
+  </head>
+  <body>
+    <script>
+      class Cable {
+        constructor(type, numberOfWires, diameter) {
+          this.type = type || "Неизвестный";
+          this.numberOfWires = numberOfWires || 0;
+          this.diameter = diameter || 0;
+        }
+
+        calculateQuality() {
+          return this.diameter / this.numberOfWires;
+        }
+
+        displayInfo() {
+          console.log(
+            `Информация о кабеле - Тир: ${this.type}, Количество проводов: ${this.numberOfWires}, Диаметр: ${this.diameter}`
+          );
+        }
+      }
+
+      class ModifiedCable extends Cable {
+        constructor(type, numberOfWires, diameter, hasShielding) {
+          super(type, numberOfWires, diameter);
+          this.P = hasShielding || false;
+        }
+
+        calculateQuality() {
+          if (this.P) {
+            return 2 * super.calculateQuality();
+          } else {
+            return 0.7 * super.calculateQuality();
+          }
+        }
+      }
+
+      let standardCable = new Cable("Мощность", 4, 10);
+      let modifiedCable = new ModifiedCable("Данные", 8, 15, true);
+
+      standardCable.displayInfo();
+      console.log(`Качество: ${standardCable.calculateQuality()}`);
+
+      modifiedCable.displayInfo();
+      console.log(
+        `Качество (модифицированное): ${modifiedCable.calculateQuality()}`
+      );
+    </script>
+  </body>
+</html>

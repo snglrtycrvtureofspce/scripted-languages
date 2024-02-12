@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторная работа №31</title>
+  </head>
+  <body>
+    <script>
+      class Time {
+        /**
+         * Конструктор класса Time.
+         * @param {number} hours - Часы (от 0 до 23).
+         * @param {number} minutes - Минуты (от 0 до 59).
+         * @param {number} seconds - Секунды (от 0 до 59).
+         */
+        constructor(hours, minutes, seconds) {
+          this.setHours(hours);
+          this.setMinutes(minutes);
+          this.setSeconds(seconds);
+        }
+
+        /**
+         * Устанавливает значение для часов.
+         * @param {number} hours - Часы (от 0 до 23).
+         * @throws {Error} - Выбрасывается при недопустимом значении часов.
+         */
+        setHours(hours) {
+          if (hours >= 0 && hours < 24) {
+            this.hours = hours;
+          } else {
+            throw new Error("Недопустимое значение для часов");
+          }
+        }
+
+        /**
+         * Устанавливает значение для минут.
+         * @param {number} minutes - Минуты (от 0 до 59).
+         * @throws {Error} - Выбрасывается при недопустимом значении минут.
+         */
+        setMinutes(minutes) {
+          if (minutes >= 0 && minutes < 60) {
+            this.minutes = minutes;
+          } else {
+            throw new Error("Недопустимое значение для минут");
+          }
+        }
+
+        /**
+         * Устанавливает значение для секунд.
+         * @param {number} seconds - Секунды (от 0 до 59).
+         * @throws {Error} - Выбрасывается при недопустимом значении секунд.
+         */
+        setSeconds(seconds) {
+          if (seconds >= 0 && seconds < 60) {
+            this.seconds = seconds;
+          } else {
+            throw new Error("Недопустимое значение для секунд");
+          }
+        }
+
+        /**
+         * Добавляет указанное количество часов к текущему времени.
+         * @param {number} hours - Количество часов для добавления.
+         */
+        addHours(hours) {
+          this.setHours(this.hours + hours);
+        }
+
+        /**
+         * Добавляет указанное количество минут к текущему времени.
+         * @param {number} minutes - Количество минут для добавления.
+         */
+        addMinutes(minutes) {
+          this.setMinutes(this.minutes + minutes);
+        }
+
+        /**
+         * Добавляет указанное количество секунд к текущему времени.
+         * @param {number} seconds - Количество секунд для добавления.
+         */
+        addSeconds(seconds) {
+          this.setSeconds(this.seconds + seconds);
+        }
+      }
+
+      // Пример использования
+      try {
+        const currentTime = new Time(12, 30, 45);
+        console.log("Текущее время:", currentTime);
+
+        currentTime.addHours(2);
+        console.log("Время после добавления 2 часа:", currentTime);
+
+        currentTime.addMinutes(15);
+        console.log("Время после добавления 15 минут:", currentTime);
+
+        console.log(
+          "Время после добавления 30 секунд (БУДЕТ ОШИБКА):",
+          currentTime
+        );
+        currentTime.addSeconds(30);
+      } catch (error) {
+        console.error("Ошибка:", error.message);
+      }
+    </script>
+  </body>
+</html>

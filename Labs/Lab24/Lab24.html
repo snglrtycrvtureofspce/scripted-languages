@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторная работа №24</title>
+  </head>
+  <body>
+    <form name="search">
+      <label
+        >Search the site:
+        <input type="text" name="search" />
+      </label>
+      <input type="submit" value="Search!" />
+    </form>
+
+    <hr />
+
+    <form name="search-person">
+      Search the visitors:
+      <table id="age-table">
+        <tr>
+          <td>Age:</td>
+          <td id="age-list">
+            <label>
+              <input type="radio" name="age" value="young" />less than 18</label
+            >
+            <label>
+              <input type="radio" name="age" value="mature" />18-50</label
+            >
+            <label>
+              <input type="radio" name="age" value="senior" />more than
+              50</label
+            >
+          </td>
+        </tr>
+
+        <tr>
+          <td>Additionally:</td>
+          <td>
+            <input type="text" name="info[0]" />
+            <input type="text" name="info[1]" />
+            <input type="text" name="info[2]" />
+          </td>
+        </tr>
+      </table>
+
+      <input type="submit" value="Search!" />
+    </form>
+
+    <script>
+      // Задание 1
+      let ageTable = document.getElementById("age-table");
+      console.log("Таблица с id='age-table':", ageTable);
+
+      // Задание 2
+      let labelsInsideTable = ageTable.querySelectorAll("label");
+      console.log("Все элементы label внутри таблицы:", labelsInsideTable);
+
+      // Задание 3
+      let firstTdInTable = ageTable.querySelector("td");
+      console.log("Первый td в таблице (со словом 'Age'):", firstTdInTable);
+
+      // Задание 4
+      let searchForm = document.querySelector("form[name='search']");
+      console.log("Форма form с именем name='search':", searchForm);
+
+      // Задание 5
+      let firstInputInForm = searchForm.querySelector("input");
+      console.log("Первый input в форме:", firstInputInForm);
+
+      // Задание 6
+      let lastInputInForm = searchForm.querySelector("input:last-child");
+      console.log("Последний input в форме:", lastInputInForm);
+    </script>
+  </body>
+</html>

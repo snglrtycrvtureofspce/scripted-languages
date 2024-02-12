@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторная работа №21</title>
+  </head>
+  <body>
+    <script>
+      // Задание 1
+      const myArray = [1, 2, 3, 4, 5];
+      window.myArray = myArray;
+      console.log(myArray);
+
+      // Задание 2
+      const userNumber = prompt("Введите число от 100 до 1000:");
+      const parsedNumber = parseInt(userNumber, 10);
+
+      if (!isNaN(parsedNumber) && parsedNumber >= 100 && parsedNumber <= 1000) {
+        window.scrollTo(0, parsedNumber);
+      } else {
+        alert("Некорректный ввод числа.");
+      }
+
+      // Задание 3
+      const randomWidth = Math.floor(Math.random() * window.innerWidth) + 400;
+      const randomHeight = Math.floor(Math.random() * window.innerHeight) + 400;
+      window.resizeTo(randomWidth, randomHeight);
+
+      // Задание 4
+      function openPage(pageName) {
+        window.open(pageName, "_self");
+      }
+
+      const page1 = "<h1>Страница 1</h1><p>Это первая страница.</p>";
+      const page2 = "<h1>Страница 2</h1><p>Это вторая страница.</p>";
+      const page3 = "<h1>Страница 3</h1><p>Это третья страница.</p>";
+
+      localStorage.setItem("page1", page1);
+      localStorage.setItem("page2", page2);
+      localStorage.setItem("page3", page3);
+
+      const navButtons = [
+        { name: "Page 1", action: "openPage('page1')" },
+        { name: "Page 2", action: "openPage('page2')" },
+        { name: "Page 3", action: "openPage('page3')" },
+      ];
+
+      const navigation = document.createElement("div");
+      navButtons.forEach((button) => {
+        const btn = document.createElement("button");
+        btn.textContent = button.name;
+        btn.setAttribute("onclick", button.action);
+        navigation.appendChild(btn);
+      });
+
+      document.body.appendChild(navigation);
+    </script>
+  </body>
+</html>

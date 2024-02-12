@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторная работа №29</title>
+  </head>
+  <body>
+    <script>
+      // Задание 1
+      function fetchDataWithTimeout(url, timeout) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(`Данные, полученные от ${url}`);
+          }, timeout);
+        });
+      }
+
+      // Задание 2
+      function allPromises(promises) {
+        return Promise.all(promises);
+      }
+
+      // Задание 3
+      function getRandomNumberPromise() {
+        return new Promise((resolve) => {
+          const randomTimeout = Math.floor(Math.random() * 5000) + 1000;
+          setTimeout(() => {
+            const randomNumber = Math.floor(Math.random() * 100) + 1;
+            resolve(randomNumber);
+          }, randomTimeout);
+        });
+      }
+
+      // Задание 4
+      function fetchDataForURLs(urls) {
+        const promises = urls.map((url) => {
+          return fetch(url)
+            .then((response) => response.json())
+            .then((data) => ({ url, data }))
+            .catch((error) => ({ url, error }));
+        });
+
+        return Promise.all(promises);
+      }
+
+      // Задание 5
+      function timeoutForPromises(promises, timeout) {
+        return Promise.allSettled(
+          promises.map((promise) =>
+            Promise.race([
+              promise,
+              new Promise((_, reject) =>
+                setTimeout(() => reject(new Error("Тайм-аут")), timeout)
+              ),
+            ])
+          )
+        );
+      }
+
+      fetchDataWithTimeout("https://vk.com/api/data", 3000)
+        .then((data) => {
+          console.log(data);
+          document.body.innerHTML += `<p>${data}</p>`;
+        })
+        .catch((error) => console.error(error));
+
+      const promisesArray = [
+        getRandomNumberPromise(),
+        getRandomNumberPromise(),
+        getRandomNumberPromise(),
+      ];
+      allPromises(promisesArray).then((results) => {
+        console.log(results);
+        document.body.innerHTML += `<p>${JSON.stringify(results)}</p>`;
+      });
+
+      fetchDataForURLs([
+        "https://jsonplaceholder.typicode.com/comments?postId=1",
+        "https://jsonplaceholder.typicode.com/posts/1/comments",
+      ]).then((results) => {
+        console.log(results);
+        document.body.innerHTML += `<p>${JSON.stringify(results)}</p>`;
+      });
+
+      timeoutForPromises(promisesArray, 2000).then((results) => {
+        console.log(results);
+        document.body.innerHTML += `<p>${JSON.stringify(results)}</p>`;
+      });
+    </script>
+  </body>
+</html>

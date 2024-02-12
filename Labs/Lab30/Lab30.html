@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №30</title>
+</head>
+<body>
+
+<div>
+    <p>Первые n членов монотонной последовательности:</p>
+    <p id="result"></p>
+</div>
+
+<script defer>
+    function generateMonotonicSequence(n, currentNumber = 1, count = 1, sequence = []) {
+        if (n === 0) {
+            return sequence;
+        }
+
+        sequence.push(currentNumber);
+
+        if (count < currentNumber) {
+            return generateMonotonicSequence(n - 1, currentNumber, count + 1, sequence);
+        } else {
+            return generateMonotonicSequence(n - 1, currentNumber + 1, 1, sequence);
+        }
+    }
+
+    function displaySequence(sequence) {
+        const resultElement = document.getElementById("result");
+        resultElement.textContent = sequence.join(", ");
+    }
+
+    const n = 10;
+    const sequence = generateMonotonicSequence(n);
+    displaySequence(sequence);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторная работа №23</title>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      td {
+        border: 1px solid black;
+        padding: 8px;
+      }
+
+      .diagonal {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Задание 1 -->
+    <script>
+      const divElement = document.querySelector("div");
+      const ulElement = document.querySelector("ul");
+      const secondLiElement = document.querySelector("ul li:nth-child(2)");
+
+      console.log("Элемент <div>: ", divElement);
+      console.log("Элемент <ul>: ", ulElement);
+      console.log("Второй <li> (с именем Пит): ", secondLiElement);
+    </script>
+
+    <!-- Задание 2 -->
+    <script>
+      const elem1 = document.getElementById("example1");
+      console.log(elem1.lastChild.nextSibling);
+
+      const elem2 = document.getElementById("example2");
+      console.log(elem2.children[0].previousSibling);
+    </script>
+
+    <!-- Задание 3 -->
+    <table>
+      <tr>
+        <td style="background-color: red">1:1</td>
+        <td>2:1</td>
+        <td>3:1</td>
+      </tr>
+      <tr>
+        <td>1:2</td>
+        <td style="background-color: red">2:2</td>
+        <td>3:2</td>
+      </tr>
+      <tr>
+        <td>1:3</td>
+        <td>2:3</td>
+        <td style="background-color: red">3:3</td>
+      </tr>
+    </table>
+  </body>
+</html>

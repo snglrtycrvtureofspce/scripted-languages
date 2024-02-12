@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторная работа №26</title>
+  </head>
+  <body>
+    <script>
+      async function calculateEquation(x, k) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            let result = 0;
+            for (let i = 1; i <= k; i++) {
+              result +=
+                (Math.pow(-1, i - 1) * Math.pow(x, 3 * i)) / factorial(3 * i);
+            }
+            resolve(result);
+          }, getRandomTime());
+        });
+      }
+
+      function getRandomTime() {
+        return Math.floor(Math.random() * 10000) + 1000;
+      }
+
+      function factorial(n) {
+        if (n === 0 || n === 1) {
+          return 1;
+        } else {
+          return n * factorial(n - 1);
+        }
+      }
+
+      async function calculateAndDisplay() {
+        const inputs = [
+          { x: 2, k: 2 },
+          { x: 1, k: 3 },
+          { x: 3, k: 4 }
+        ];
+
+        for (const input of inputs) {
+          const result = await calculateEquation(input.x, input.k);
+          console.log(`f(${input.x}, ${input.k}) = ${result}`);
+          displayResult(`f(${input.x}, ${input.k}) = ${result}`);
+        }
+      }
+
+      function displayResult(result) {
+        const resultDiv = document.createElement("div");
+        resultDiv.textContent = result;
+        document.body.appendChild(resultDiv);
+      }
+
+      calculateAndDisplay();
+    </script>
+  </body>
+</html>
