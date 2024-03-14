@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 5</title>
+</head>
+<body>
+    <script>
+        var arrSequence = [12, 13, 14, 15, 16, 17, 18]; // не помню натуральные числа
+        function sum_of (arrSequence)
+        {
+            let sumMult = 0;
+            for (let num in arrSequence)
+            {
+                if(num >= 10 && num <= 99 && num % 5 === 0)
+                {
+                    sumMult =+ num;
+                }
+            }
+        }
+        var result = sum_of(arrSequence);
+        console.log("Результат: " + result);
+    </script>
+</body>
+</html>
